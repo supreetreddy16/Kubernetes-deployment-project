@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: supreetr
+spec:
+   replicas: 2
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     app: supreetr
+   template:
+      metadata:
+        labels:
+          app: supreetr
+      spec:
+       containers:
+        - name: supreetr
+          image: kubdeployment/pipeline-demo
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
